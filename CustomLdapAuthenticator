@@ -1,0 +1,31 @@
+/**
+ * Class to provide customised Ldap Authentication, by using LDAP authentication
+ * properties.
+ * 
+ *
+ *
+ */
+@Component
+public class CustomLdapAuthenticator {
+	private static final Logger log = LoggerFactory.getLogger(CustomLdapAuthenticator.class);
+	@Autowired
+	private LdapUserServiceImpl ldapManager;
+
+	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+		log.info("Authetication of user details started.");
+		ServletRequestAttributes authContext = ((ServletRequestAttributes) (RequestContextHolder
+				.currentRequestAttributes()));
+
+		String username = authContext.getRequest().getParameter("username");// authentication.getName();
+		String password = authContext.getRequest().getParameter("password");// (String) authentication.getCredentials();
+		boolean userAttribFetched = ldapManager.authenticateUser(username, password);
+		log.info("Authetication Done for the user: " + username);
+		if (!userAttribFetched)
+			throw new TurbineApiException("Not Authorised", HttpStatus.UNAUTHORIZED);
+		return new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
+	}
+
+	public boolean supports(Class<?> authentication) {
+		return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
+	}
+}
