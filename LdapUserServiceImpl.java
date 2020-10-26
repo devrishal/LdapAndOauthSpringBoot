@@ -66,7 +66,6 @@ public class LdapUserServiceImpl {
 	private void populateEnviromentProperties(Properties env) throws NamingException {
 		env.put(ApplicationProperty.INIT_CTX_FACTORY, initialContextFactory);
 		env.put(ApplicationProperty.NAMING_PROVIDER_URL, providerURL);
-		// env.put(SbicCommon.SECURITY_AUTHENTICATION, securityProtocol);
 		env.put(ApplicationProperty.SECURITY_PRINCIPAL, authMode);
 		env.put(ApplicationProperty.SECURITY_PRINCIPAL, adminUserName);
 		env.put(ApplicationProperty.SECURITY_CREDENTIALS, adminPassword);
