@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.sbic.turbine.constant.ApplicationProperty;
+
 
 /**
  * This class is responsible for authenticating the user using username and
