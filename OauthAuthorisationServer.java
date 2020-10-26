@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import com.sbic.turbine.security.CustomAuthenticationManager;
+
 
 /**
  * Authorisation Server for OAuth authentication/authorisation.
