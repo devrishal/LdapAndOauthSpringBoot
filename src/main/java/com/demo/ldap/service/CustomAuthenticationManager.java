@@ -1,4 +1,4 @@
-package com.rishal.restapi.security;
+package com.demo.ldap.service;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
@@ -28,8 +28,8 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		ServletRequestAttributes authContext = ((ServletRequestAttributes) (RequestContextHolder
 				.currentRequestAttributes()));
-		String authMode = authContext.getRequest().getParameter(ApplicationProperty.GRANT_TYPE);
-		if (!isEmpty(authMode) && authMode.equals(ApplicationProperty.GRANT_TYPE_PASSWORD)) {
+		String authMode = authContext.getRequest().getParameter("GRANT_TYPE");
+		if (!isEmpty(authMode) && authMode.equals("PASSWORD")) {
 			return ldapAuthenticator.authenticate(authentication);
 		}
 		return authentication;
